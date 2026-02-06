@@ -53,8 +53,9 @@ class Response {
                         for await (const data of req) {
                             buf.push(data);
                         }
+                        const people = JSON.parse(Buffer.concat(buf).toString())?.rows ?? [];
                         response = new Response(JSON.stringify(
-                            await database.query(Buffer.concat(buf).toString() ?? ''),
+                            await database`INSERT INTO people ${sql(people)}`,
                         ), {
                             headers: {
                                 'Content-Type': 'application/json',
