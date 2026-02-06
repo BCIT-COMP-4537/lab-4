@@ -55,7 +55,7 @@ class Response {
                         }
                         const people = JSON.parse(Buffer.concat(buf).toString())?.rows ?? [];
                         response = new Response(JSON.stringify(
-                            await database`INSERT INTO people ${sql(people)}`,
+                            await database.sql`INSERT INTO people ${database.sql(people)}`,
                         ), {
                             headers: {
                                 'Content-Type': 'application/json',
