@@ -1,0 +1,46 @@
+<html lang="en">
+<head> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lab 5 - Patient Database</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+    <main>
+        <header id="header">
+            <h1 id="title"></h1>
+            <p id="subtitle"></p>
+        </header>
+
+        <!--Insert Patients into table-->
+        <section class="card"> 
+            <h2 id="insHeading"></h2>
+            <p id="insDesc"></p>
+            <div>
+                <button id="insBtn" type="button"></button>
+                <span id="insStatus"></span>
+            </div>
+        </section>
+
+        <!--SELECT Query-->
+        <section class="card">
+            <h2 id="qHeading"></h2>
+            <p id="qDesc"></p>
+            <label id="qInputLabel" for="qInput"></label>
+            <textarea id="qInput" rows="5" spellcheck="false"></textarea>
+            <div>
+                <button id="qBtn" type="button"></button>
+            </div>
+        </section>
+
+        <!--Response from Query-->
+        <section class="card">
+            <h2 id="resHeading"></h2>
+            <p id="resDesc"></p>
+            <pre id="resOutput"></pre>
+        </section>
+    </main>
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
