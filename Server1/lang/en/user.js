@@ -9,12 +9,12 @@ export const MSG = {
 
   /* -------------------- PAGE TEXT -------------------- */
   PAGE_TITLE: 'Lab 5 — Patient Database',
-  PAGE_SUBTITLE: 'Insert sample rows and run SELECT queries via Server2 (API).',
+  PAGE_SUBTITLE: 'Insert test patients into database, and search patients by SQL query',
 
   /* -------------------- INSERT CARD -------------------- */
   INSERT_HEADING: 'Insert',
   INSERT_DESC:
-    'Press Insert to request Server2 to create the patient table if needed and insert the sample patient rows. Press multiple times to grow the table.',
+    'Press Insert to send sample patients to the database. Press multiple times to grow the table',
   INSERT_BUTTON: 'Insert',
   STATUS_INSERTING: 'Inserting...',
   STATUS_READY: '',
@@ -23,17 +23,17 @@ export const MSG = {
   /* -------------------- QUERY CARD -------------------- */
   QUERY_HEADING: 'Run a SELECT query',
   QUERY_DESC:
-    'Enter a SELECT statement to retrieve patient data. Server2 enforces read-only database privileges.',
+    'Enter a SELECT statement to retrieve patient data.',
   QUERY_LABEL: 'SQL query',
   QUERY_BUTTON: 'Run SELECT',
   STATUS_QUERYING: 'Running query...',
 
   // Default query placed in the textarea on page load
-  DEFAULT_QUERY: 'select * from patient',
+  DEFAULT_QUERY: 'select * from people',
 
   /* -------------------- RESPONSE CARD -------------------- */
   RESPONSE_HEADING: 'Response',
-  RESPONSE_DESC: 'The JSON response from Server2 will appear below.',
+  RESPONSE_DESC: 'The response will appear below.',
   DEFAULT_OUTPUT: '{}',
 
   /* -------------------- ERRORS -------------------- */

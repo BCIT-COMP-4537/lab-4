@@ -1,0 +1,141 @@
+/* server1/css/styles.css */
+:root {
+  --max-width: 900px;
+  --radius: 12px;
+  --border: #e5e7eb;
+  --bg: #ffffff;
+  --muted: #6b7280;
+  --text: #111827;
+  --card-bg: #ffffff;
+  --page-bg: #f7f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Main layout */
+main {
+  max-width: var(--max-width);
+  margin: 40px auto;
+  padding: 0 16px 48px;
+}
+
+/* Header */
+#header {
+  margin-bottom: 18px;
+}
+
+#title {
+  margin: 0 0 6px;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+#subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Card sections */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+/* Form controls */
+label {
+  display: block;
+  margin: 8px 0 6px;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  max-width: 520px;
+  min-height: 110px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  background: var(--bg);
+  color: var(--text);
+}
+
+textarea:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.35);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+/* Buttons */
+button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #111827;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#insBtn, #qBtn {
+  margin-top: 10px;
+}
+
+/* Status text */
+#insStatus {
+  display: inline-block;
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Response output */
+pre {
+  margin: 10px 0 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1020;
+  color: #e5e7eb;
+  overflow: auto;
+  max-height: 360px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
