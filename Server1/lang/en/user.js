@@ -29,7 +29,7 @@ export const MSG = {
   STATUS_QUERYING: 'Running query...',
 
   // Default query placed in the textarea on page load
-  DEFAULT_QUERY: 'select * from people',
+  DEFAULT_QUERY: 'SELECT * from people',
 
   /* -------------------- RESPONSE CARD -------------------- */
   RESPONSE_HEADING: 'Response',

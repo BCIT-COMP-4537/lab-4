@@ -37,6 +37,8 @@ export class App {
         this.setText(this.resDesc, MSG.RESPONSE_DESC);
 
         this.setStatus(MSG.STATUS_READY);
+
+        if (this.qInput) this.qInput.value = MSG.DEFAULT_QUERY;
     }
 
     bindEvents() {
