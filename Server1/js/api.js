@@ -37,10 +37,19 @@ export class Api {
     }
 
     async insert() {
+        const payload = {
+            rows: [
+                { name: 'Sara Brown', dob: '1901-01-01' },
+                { name: 'John Smith', dob: '1941-01-01' },
+                { name: 'Jack Ma', dob: '1961-01-30' },
+                { name: 'Elon Musk', dob: '1999-01-01' }
+            ]
+        };
+
         return this.request(MSG.PATH_INSERT, {
             method : 'POST',
             headers: { 'Content-Type': 'text/plain; charset=utf-8'},
-            body: 'insert'
+            body: JSON.stringify(payload)
         });
     }
 
