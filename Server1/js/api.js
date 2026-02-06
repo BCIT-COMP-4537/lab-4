@@ -45,7 +45,18 @@ export class Api {
     }
 
     async runSqlSelect(query) {
-        const encode = encodeURIComponent(query);
-        return this.request(`${MSG.PATH_SQL_PRE}${encode}`, {method: 'GET'});
+        const url = new URL(this.origin);
+
+        url.searchParams.set('sql', query);
+
+        const res = await fetch(url.toString(), { method: 'GET'});
+        const data = await this.parseJson(res);
+
+        if(!res.ok) {
+            const payload = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+            throw new Error(`${MSG.ERROR_HTTP} ${res.status}\n${payload}`);
+        }
+
+        return data;
     }
 }

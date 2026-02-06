@@ -2,7 +2,7 @@ export const MSG = {
   /* -------------------- CONFIG -------------------- */
   // Origin (protocol + domain + optional port) of Server2 (API).
   // Example: 'https://your-partner-api.onrender.com'
-  API_ORIGIN: 'https://YOUR-SERVER2-DOMAIN',
+  API_ORIGIN: 'https://lab-4-r6j4.onrender.com',
 
   // Document/tab title (since <title> is empty in HTML)
   DOC_TITLE: 'Lab 5 - Patient Database',
@@ -44,10 +44,5 @@ export const MSG = {
 
   /* -------------------- API PATHS (Server2 routes) -------------------- */
   // POST insert endpoint
-  PATH_INSERT: '/lab5/api/v1/insert',
-
-  // GET SQL endpoint prefix (query is appended and URL-encoded)
-  // Full format required by lab:
-  //   /lab5/api/v1/sql/<encoded SQL>
-  PATH_SQL_PRE: '/lab5/api/v1/sql/'
+  PATH_INSERT: '/lab5/api/v1/insert'
 };
