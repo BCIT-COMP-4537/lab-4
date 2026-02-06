@@ -44,6 +44,7 @@ class Response {
                         ), {
                             headers: {
                                 'Content-Type': 'application/json',
+                                'Access-Control-Allow-Origin': '*',
                             },
                         });
                         break;
@@ -52,13 +53,12 @@ class Response {
                         for await (const data of req) {
                             buf.push(data);
                         }
-                        console.log(Buffer.concat(buf).toString());
-
                         response = new Response(JSON.stringify(
                             await database.query(Buffer.concat(buf).toString() ?? ''),
                         ), {
                             headers: {
                                 'Content-Type': 'application/json',
+                                'Access-Control-Allow-Origin': '*',
                             },
                         });
                         break;
@@ -75,6 +75,7 @@ class Response {
             } catch (err) {
                 res.statusCode = 500;
                 res.setHeader('Content-Type', 'application/json');
+                res.setHeader('Access-Control-Allow-Origin', '*');
                 res.end(JSON.stringify({ error: err.message }));
             }
         });
