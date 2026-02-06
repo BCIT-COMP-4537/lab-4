@@ -23,14 +23,19 @@ const database = new (class {
 
 class Response {
     constructor(body, options = {}) {
-        this.body = body;
+        this.body = JSON.stringify(body);
         this.status = options.status || 200;
-        this.headers = options.headers || {};
+        this.headers = options.headers || {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        };
     }
 }
 
 (new (class {
     constructor() {
+
+
         this.server = http.createServer(async (req, res) => {
             const parsedUrl = url.parse(req.url, true);
 
@@ -39,14 +44,7 @@ class Response {
 
                 switch (req.method) {
                     case 'GET':
-                        response = new Response(JSON.stringify(
-                            await database.query(parsedUrl.query.sql ?? ''),
-                        ), {
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Access-Control-Allow-Origin': '*',
-                            },
-                        });
+                        response = new Response(await database.query(parsedUrl.query.sql ?? ''));
                         break;
                     case 'POST':
                         const buf = [];
@@ -54,14 +52,7 @@ class Response {
                             buf.push(data);
                         }
                         const people = JSON.parse(Buffer.concat(buf).toString())?.rows ?? [];
-                        response = new Response(JSON.stringify(
-                            await database.sql`INSERT INTO people ${database.sql(people)}`,
-                        ), {
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Access-Control-Allow-Origin': '*',
-                            },
-                        });
+                        response = new Response(await database.sql`INSERT INTO people ${database.sql(people)}`);
                         break;
                     default:
                         response = new Response(null, { status: 405 });
@@ -74,10 +65,15 @@ class Response {
                 }
                 res.end(response.body);
             } catch (err) {
-                res.statusCode = 500;
-                res.setHeader('Content-Type', 'application/json');
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                res.end(JSON.stringify({ error: err.message }));
+                const response = new Response({ error: err.message }, {
+                    status: 500,
+                });
+
+                res.statusCode = response.status;
+                for (const [key, value] of Object.entries(response.headers)) {
+                    res.setHeader(key, value);
+                }
+                res.end(response.body);
             }
         });
     }
